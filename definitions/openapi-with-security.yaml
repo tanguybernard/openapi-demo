@@ -33,6 +33,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/User'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+      security:
+        - bearerAuth: [ ]
+
   /users:
     get:
       tags:
@@ -41,7 +46,7 @@ paths:
       operationId: "getUsers"
       responses:
         200:
-          description: "List all users"
+          description: "A list of users"
           content:
             application/json:
               schema:
@@ -85,7 +90,11 @@ components:
 #    BasicAuth:
 #      type: http
 #      scheme: basic
-
+  securitySchemes:
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 
 
   schemas:
@@ -124,3 +133,9 @@ components:
             properties:
               message:
                 type: string
+    UnauthorizedError:
+      description: Access token is missing or invalid
+
+# 2) Apply the security globally to all operations
+security:
+  - bearerAuth: []         # use the same name as above

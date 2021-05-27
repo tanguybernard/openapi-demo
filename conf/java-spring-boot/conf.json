@@ -1,0 +1,8 @@
+{
+  "basePackage": "com.demo.codegen",
+  "configPackage": "com.demo.codegen.config",
+  "apiPackage": "com.demo.codegen.controllers",
+  "modelPackage": "com.demo.codegen.model",
+  "groupId": "com.demo",
+  "artifactId": "spring-boot-codegenerator"
+}
